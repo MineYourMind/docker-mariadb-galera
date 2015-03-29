@@ -17,9 +17,9 @@ RUN	LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get install -y iproute mariadb-g
 # this is for testing - can be commented out later
 RUN	LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get install -y iputils-ping net-tools
 
-RUN apt-key adv --keyserver keys.gnupg.net --recv-keys 1C4CBDCDCD2EFD2A
-RUN	add-apt-repository 'deb http://repo.percona.com/apt trusty main'
-RUN	apt-get -y update
+#RUN apt-key adv --keyserver keys.gnupg.net --recv-keys 1C4CBDCDCD2EFD2A
+#RUN	add-apt-repository 'deb http://repo.percona.com/apt trusty main'
+#RUN	apt-get -y update
 RUN	LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get install -y percona-xtrabackup
 
 # Add config(s) - standalone and cluster mode
