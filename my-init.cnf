@@ -1,7 +1,7 @@
 [mysql]
 
 # CLIENT #
-port                           = 3306
+port                           = 3304
 socket                         = /var/lib/mysql/mysql.sock
 
 [mysqld]
