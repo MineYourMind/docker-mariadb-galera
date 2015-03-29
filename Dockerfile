@@ -12,7 +12,7 @@ RUN apt-get install -y software-properties-common
 RUN apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db
 RUN add-apt-repository 'deb http://mirror.netcologne.de/mariadb/repo/10.0/ubuntu trusty main'
 RUN apt-get -y update
-RUN	LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get install -y iproute mariadb-galera-server galera rsync netcat-openbsd socat pv
+RUN	LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get install -y iproute mariadb-galera-server-10.0 galera rsync netcat-openbsd socat pv
 
 # this is for testing - can be commented out later
 RUN	LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get install -y iputils-ping net-tools
