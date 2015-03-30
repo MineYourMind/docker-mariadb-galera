@@ -23,7 +23,7 @@ RUN echo mariadb-galera-server-10.0 mysql-server/root_password_again password ro
 # install the necessary packages
 RUN LC_ALL=en_US.utf8 DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::='--force-confnew' -qqy install mariadb-galera-server galera mariadb-client
 # upload the locally created my.cnf (obviously this can go into the default MariaDB path
-ADD /home/mcgameserver/docker-mariadb-galera/my.cnf /etc/mysql/my.cnf
+ADD ./my.cnf /etc/mysql/my.cnf
 # startup the service - this will fail since the nodes haven't been configured on first boot
 RUN service mysql restart
 # open the ports required to connect to MySQL and for Galera SST / IST operations
