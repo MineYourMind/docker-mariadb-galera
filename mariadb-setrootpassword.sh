@@ -4,8 +4,8 @@ set -u
 
 MSA=/usr/bin/mysqladmin
 # generate long random password
-MARIADB_ROOT_PW=$(openssl rand -base64 32)
-
+# MARIADB_ROOT_PW=$(openssl rand -base64 32)
+MARIADB_ROOT_PW=somePW
 
 # make sure ownership of data dir is OK
 chown -R mysql:mysql /var/lib/mysql
