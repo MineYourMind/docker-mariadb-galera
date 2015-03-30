@@ -26,7 +26,7 @@ RUN	LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get install -y percona-xtrabacku
 ADD	./my-cluster.cnf /etc/mysql/my-cluster.cnf
 ADD ./my-init.cnf /etc/mysql/my-init.cnf
 
-expose	3306 4567 4444 22
+expose	3304 4567 4444 22
 
 ADD	./mariadb-setrootpassword.sh /usr/bin/mariadb-setrootpassword
 

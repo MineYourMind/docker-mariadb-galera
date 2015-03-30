@@ -15,7 +15,7 @@ port accessible from anywhere if the host firewall is unconfigured. It
 also exposes the Galera wsrep port (by default 4567) globally, as well
 as the snapshot transfer port (default 4444). Care should be taken,
 perhaps, to firewall off these ports at the docker root level. While
-port 3306 might need wider exposure, ports 4567 and 4444 have no need
+port 3304 might need wider exposure, ports 4567 and 4444 have no need
 to be exposed to anything other than members of the cluster.
 
 The root password for the first node (and therefore the entire
@@ -123,7 +123,7 @@ This should (gracefully) stop the standalone mode MariaDB node
 
 To begin the cluster, you need a single node as a catch-all donor.
 
-DBID=$(sudo docker run -d -v /var/docker/maria01/mysql:/var/lib/mysql -e NODE_ADDR=my.host.name -v /var/docker/maria01/ssl:/etc/ssl/mysql -p 3306:3306 -p 4567:4567 -p 4444:4444 -e CLUSTER=INIT inspirationlabs/mariadb-10.0-galera)
+DBID=$(sudo docker run -d -v /var/docker/maria01/mysql:/var/lib/mysql -e NODE_ADDR=my.host.name -v /var/docker/maria01/ssl:/etc/ssl/mysql -p 3304:3304 -p 4567:4567 -p 4444:4444 -e CLUSTER=INIT inspirationlabs/mariadb-10.0-galera)
 
 This should restart the server (with data intact) with the ability to
 use it to populate new nodes to fill out the cluster. Node that the
@@ -147,7 +147,7 @@ and `/data/mysql-ssl` directories as per the primary node, and execute
 DBID=$(sudo docker run -d -v /var/docker/maria02/mysql:/var/lib/mysql \
        -v /var/docker/maria02/ssl:/etc/ssl/mysql \
        -e CLUSTER= my.host.name,his.host.name,her.host.name \
-       p 3306:3306 -p 4567:4567 -p 4444:4444 \
+       p 3304:3304 -p 4567:4567 -p 4444:4444 \
        -e NODE=2\
        -e NODE_ADDR=my.host.name \
        inspirationlabs/mariadb-10.0-galera)
@@ -155,7 +155,7 @@ DBID=$(sudo docker run -d -v /var/docker/maria02/mysql:/var/lib/mysql \
 DBID=$(sudo docker run -d -v /var/docker/maria03/mysql:/var/lib/mysql \
       -v /var/docker/maria03/ssl:/etc/ssl/mysql \
       -e CLUSTER= my.host.name,his.host.name,her.host.name \
-      p 3306:3306 -p 4567:4567 -p 4444:4444 \
+      p 3304:3304 -p 4567:4567 -p 4444:4444 \
       -e NODE=2\
       -e NODE_ADDR=my.host.name \
       inspirationlabs/mariadb-10.0-galera)
@@ -183,7 +183,7 @@ sudo docker stop $DBID
 
 DBID=$(sudo docker run -d /data/mysql:/var/lib/mysql \
        -v /data/mysql-ssl:/etc/ssl/mysql \
-       -p 3306:3306 -p 4567:4567 -p 4444:4444 \
+       -p 3304:3304 -p 4567:4567 -p 4444:4444 \
        -e CLUSTER= my.host.name,his.host.name,her.host.name \
        -e NODE=1 \
        -e NODE_ADDR=my.host.name inspirationlabs/mariadb-10.0-galera \
